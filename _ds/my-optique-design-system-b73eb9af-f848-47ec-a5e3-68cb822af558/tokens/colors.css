@@ -1,0 +1,122 @@
+/* ─────────────────────────────────────────────────────────────
+   My Optique — Colour System
+   ───────────────────────────────────────────────────────────
+   The product app is LIGHT-first ("paper"); the marketing surface
+   is DARK-first. :root holds the light theme (the app default).
+   [data-theme="dark"] / .theme-dark swaps to the dark palette.
+   Base tokens are raw values; SEMANTIC aliases are what you should
+   reference in components so dark/light just works.
+───────────────────────────────────────────────────────────── */
+
+:root {
+  /* ── Brand · Bronze & Sand ─────────────────────────── */
+  --bronze:          #AB8362;   /* primary accent           */
+  --bronze-hover:    #8C6A4E;   /* pressed / hover state     */
+  --bronze-light:    #C9A882;   /* highlight / soft accent   */
+  --bronze-deep:     #8B6642;   /* accent on light bg (AA)   */
+  --sand:            #DCC7A9;   /* secondary warm neutral    */
+  --sand-pale:       #EDD9C2;   /* active nav wash           */
+
+  /* ── Warm Neutrals · Light ─────────────────────────── */
+  --paper:           #F9F8F3;   /* app canvas                */
+  --paper-warm:      #F4F1EA;   /* tinted surface            */
+  --linen:           #E6E1D7;   /* hairline borders          */
+  --bg-l1:           #FDFCF8;   /* lightest layer            */
+  --bg-l2:           #F5F2EC;
+  --bg-l3:           #EDE9E1;
+  --bg-l4:           #E4DFD5;   /* deepest light layer       */
+
+  /* ── Warm Neutrals · Dark ──────────────────────────── */
+  --ink-l1:          #080706;   /* deepest dark layer        */
+  --ink-l2:          #0C0B09;
+  --ink-l3:          #0D0C0A;
+  --ink-l4:          #111009;   /* raised dark surface       */
+
+  /* ── Text ──────────────────────────────────────────── */
+  --charcoal:        #2D2A26;   /* primary text on light     */
+  --muted:           #8A817C;   /* secondary text            */
+  --cream:           #F9F8F3;   /* primary text on dark      */
+
+  /* ── Status / Semantic ─────────────────────────────── */
+  --success:         #10B981;
+  --success-soft:    #ECFDF5;
+  --error:           #EF4444;
+  --error-soft:      #FEF2F2;
+  --warning:         #F59E0B;
+  --warning-soft:    #FFFBEB;
+  --info:            #3B82F6;
+  --info-soft:       #EFF6FF;
+  --purple:          #8B5CF6;
+  --purple-soft:     #F5F3FF;
+
+  /* ─────────────────────────────────────────────────────
+     SEMANTIC ALIASES — LIGHT THEME (app default)
+     Reference these in components, never raw values.
+  ───────────────────────────────────────────────────── */
+  --bg-canvas:       var(--paper);          /* page behind panels */
+  --bg-base:         #FFFFFF;               /* primary surface    */
+  --surface-card:    #FFFFFF;
+  --surface-sunken:  var(--paper);          /* recessed wells     */
+  --surface-raised:  rgba(255, 255, 255, 0.82); /* glass cards    */
+  --surface-tint:    var(--paper-warm);
+
+  --border:          var(--linen);          /* default hairline   */
+  --border-strong:   var(--sand);           /* emphasised border  */
+  --border-subtle:   #F0EDE6;               /* faint dividers     */
+
+  --text-primary:    var(--charcoal);
+  --text-secondary:  var(--muted);
+  --text-tertiary:   #B6AEA6;
+  --text-inverse:    var(--cream);
+
+  --accent:          var(--bronze);
+  --accent-hover:    var(--bronze-hover);
+  --accent-soft:     rgba(171, 131, 98, 0.10);
+  --accent-contrast: #FFFFFF;               /* text on bronze     */
+  --on-accent-num:   var(--sand);           /* serif numerals     */
+
+  --focus-ring:      rgba(171, 131, 98, 0.35);
+  --overlay-scrim:   rgba(45, 42, 38, 0.35);
+
+  color-scheme: light;
+}
+
+/* ─────────────────────────────────────────────────────
+   SEMANTIC ALIASES — DARK THEME (marketing default)
+───────────────────────────────────────────────────── */
+[data-theme="dark"],
+.theme-dark {
+  --bg-canvas:       var(--ink-l1);
+  --bg-base:         var(--ink-l2);
+  --surface-card:    var(--ink-l4);
+  --surface-sunken:  var(--ink-l1);
+  --surface-raised:  rgba(255, 255, 255, 0.04);
+  --surface-tint:    var(--ink-l3);
+
+  --border:          rgba(249, 248, 243, 0.10);
+  --border-strong:   rgba(171, 131, 98, 0.40);
+  --border-subtle:   rgba(249, 248, 243, 0.06);
+
+  --text-primary:    var(--cream);
+  --text-secondary:  rgba(249, 248, 243, 0.58);
+  --text-tertiary:   rgba(249, 248, 243, 0.34);
+  --text-inverse:    var(--charcoal);
+
+  --accent:          var(--bronze);
+  --accent-hover:    var(--bronze-light);
+  --accent-soft:     rgba(171, 131, 98, 0.14);
+  --accent-contrast: #1A1816;
+  --on-accent-num:   var(--bronze);
+
+  --focus-ring:      rgba(171, 131, 98, 0.50);
+  --overlay-scrim:   rgba(8, 7, 6, 0.66);
+
+  /* status soft fills re-tinted for dark */
+  --success-soft:    rgba(16, 185, 129, 0.12);
+  --error-soft:      rgba(239, 68, 68, 0.12);
+  --warning-soft:    rgba(245, 158, 11, 0.12);
+  --info-soft:       rgba(59, 130, 246, 0.12);
+  --purple-soft:     rgba(139, 92, 246, 0.12);
+
+  color-scheme: dark;
+}

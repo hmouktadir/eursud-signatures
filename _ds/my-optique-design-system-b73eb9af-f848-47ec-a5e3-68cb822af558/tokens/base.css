@@ -1,0 +1,47 @@
+/* ─────────────────────────────────────────────────────────────
+   My Optique — Base layer
+   Light, opinionated resets + brand defaults. Imported last by
+   styles.css so token vars are available.
+───────────────────────────────────────────────────────────── */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  font-family: var(--font-sans);
+  color: var(--text-primary);
+  background: var(--bg-canvas);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: var(--sand);
+  color: var(--charcoal);
+}
+
+/* Editorial serif helper — Fraunces optical italic */
+.font-display {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: var(--weight-serif);
+  letter-spacing: var(--tracking-tight);
+}
+
+/* Tiny all-caps tracked label — the brand's signature eyebrow */
+.eyebrow {
+  font-family: var(--font-sans);
+  font-size: var(--text-label);
+  font-weight: var(--weight-bold);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wider);
+  color: var(--accent);
+}
+
+/* Serif-italic numeral for metrics, e.g. "47 499 MAD" */
+.metric-numeral {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: var(--weight-display);
+  letter-spacing: var(--tracking-tight);
+  line-height: var(--leading-none);
+}

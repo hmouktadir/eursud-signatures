@@ -1,0 +1,53 @@
+/* ─────────────────────────────────────────────────────────────
+   My Optique — Typography
+   Display: Fraunces (editorial serif, italic 200–300, optical)
+   UI/Body: Plus Jakarta Sans (300–800)
+   Signature: serif-italic numerals for metrics; tiny all-caps
+   labels with wide tracking (0.2–0.35em).
+───────────────────────────────────────────────────────────── */
+
+:root {
+  /* ── Families ──────────────────────────────────────── */
+  --font-display: 'Fraunces', Georgia, 'Times New Roman', serif;
+  --font-sans:    'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
+  --font-mono:    ui-monospace, 'SFMono-Regular', Menlo, monospace;
+
+  /* ── Type scale (px) ───────────────────────────────── */
+  --text-hero:    88px;   /* marketing hero, Fraunces italic 200 */
+  --text-h1:      52px;   /* page display                        */
+  --text-h2:      38px;   /* section heads                       */
+  --text-h3:      28px;
+  --text-title:   22px;   /* card / metric titles                */
+  --text-lg:      18px;
+  --text-body:    16px;   /* base body                           */
+  --text-sm:      14px;
+  --text-xs:      12px;
+  --text-micro:   11px;
+  --text-label:   9px;    /* all-caps tracked label              */
+
+  /* ── Weights ───────────────────────────────────────── */
+  --weight-display: 200;  /* Fraunces hero / metrics            */
+  --weight-serif:   300;  /* Fraunces default                   */
+  --weight-light:   300;
+  --weight-regular: 400;
+  --weight-medium:  500;
+  --weight-semibold:600;
+  --weight-bold:    700;
+  --weight-heavy:   800;
+
+  /* ── Line heights ──────────────────────────────────── */
+  --leading-none:   1;
+  --leading-tight:  1.1;
+  --leading-snug:   1.3;
+  --leading-normal: 1.5;
+  --leading-relaxed:1.65;
+
+  /* ── Letter spacing ────────────────────────────────── */
+  --tracking-tighter: -0.03em;  /* large Fraunces display      */
+  --tracking-tight:   -0.01em;
+  --tracking-normal:  0;
+  --tracking-wide:    0.05em;
+  --tracking-label:   0.2em;    /* all-caps labels             */
+  --tracking-wider:   0.28em;   /* breadcrumbs / nav labels    */
+  --tracking-widest:  0.35em;   /* greetings / eyebrows        */
+}

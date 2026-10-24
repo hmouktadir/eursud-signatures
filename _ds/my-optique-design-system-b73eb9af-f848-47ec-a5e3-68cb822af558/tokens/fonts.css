@@ -1,0 +1,8 @@
+/* ─────────────────────────────────────────────────────────────
+   My Optique — Webfonts
+   Display / editorial serif: Fraunces (optical sizing, italic 300)
+   Body / UI sans:           Plus Jakarta Sans (300–800)
+   Loaded from Google Fonts. To self-host, drop the .woff2 files in
+   assets/fonts/ and replace this @import with @font-face rules.
+───────────────────────────────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,200;0,9..144,300;0,9..144,400;1,9..144,200;1,9..144,300;1,9..144,400;1,9..144,500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
