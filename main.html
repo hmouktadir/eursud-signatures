@@ -23,7 +23,7 @@ a:hover{color:#DE9300}
         <div style="display:inline-flex;align-items:center;gap:10px;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#B4B4B4"><span style="width:26px;height:3px;background:#F5A300"></span>Charte e-mail · 16 collaborateurs</div>
         <h1 style="margin:0;font-family:'Saira Condensed','Arial Narrow',sans-serif;font-weight:800;text-transform:uppercase;font-size:44px;line-height:1.02;letter-spacing:.01em">Signatures e-mail</h1>
       </div>
-      <img src="https://hmouktadir.github.io/eursud-signatures/public/logo-eursud.png" alt="EURSUD LOGISTIQUE" style="height:52px;width:auto;display:block">
+      <img src="public/logo-eursud-blanc.png" alt="EURSUD LOGISTIQUE" style="height:52px;width:auto;display:block">
     </div>
   </header>
 
@@ -46,7 +46,7 @@ a:hover{color:#DE9300}
         <div style="display:flex;gap:10px;flex-wrap:wrap">
           <button onClick="{{ copyRich }}" style="border:none;cursor:pointer;background:#F5A300;color:#141414;font-family:'Saira Condensed','Arial Narrow',sans-serif;text-transform:uppercase;font-weight:700;letter-spacing:.05em;font-size:16px;padding:12px 26px" style-hover="background:#DE9300">Copier la signature</button>
           <button onClick="{{ copyHtml }}" style="border:none;cursor:pointer;background:#141414;color:#fff;font-family:'Saira Condensed','Arial Narrow',sans-serif;text-transform:uppercase;font-weight:700;letter-spacing:.05em;font-size:16px;padding:12px 26px" style-hover="background:#000">Copier le code HTML</button>
-          <button onClick="{{ downloadHtm }}" style="border:1px solid #141414;cursor:pointer;background:#fff;color:#141414;font-family:'Saira Condensed','Arial Narrow',sans-serif;text-transform:uppercase;font-weight:700;letter-spacing:.05em;font-size:16px;padding:11px 24px" style-hover="background:#EEEEEC">Télécharger .htm</button>
+          <button onClick="{{ downloadHtm }}" style="border:1px solid #141414;cursor:pointer;background:#fff;color:#141414;font-family:'Saira Condensed','Arial Narrow',sans-serif;text-transform:uppercase;font-weight:700;letter-spacing:.05em;font-size:16px;padding:11px 24px" style-hover="background:#EEEEEC">Télécharger pour Outlook (.zip)</button>
         </div>
       </div>
 
@@ -71,7 +71,7 @@ a:hover{color:#DE9300}
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:16px">
         <div style="background:#fff;border:1px solid #DBDBD7;padding:18px 20px;display:flex;flex-direction:column;gap:6px">
           <div style="font-family:'Saira Condensed','Arial Narrow',sans-serif;font-weight:700;text-transform:uppercase;font-size:17px;letter-spacing:.04em">Outlook</div>
-          <p style="margin:0;font-size:13px;line-height:1.55;color:#4C4F52;text-wrap:pretty">Fichier → Options → Courrier → Signatures → Nouveau, puis coller (Ctrl+V). Forme exacte garantie : placer le fichier .htm dans %APPDATA%\Microsoft\Signatures.</p>
+          <p style="margin:0;font-size:13px;line-height:1.55;color:#4C4F52;text-wrap:pretty">Fichier → Options → Courrier → Signatures → Nouveau, puis coller (Ctrl+V). Avec logos garantis : extraire le .zip dans %APPDATA%\Microsoft\Signatures, redémarrer Outlook, puis choisir la signature.</p>
         </div>
         <div style="background:#fff;border:1px solid #DBDBD7;padding:18px 20px;display:flex;flex-direction:column;gap:6px">
           <div style="font-family:'Saira Condensed','Arial Narrow',sans-serif;font-weight:700;text-transform:uppercase;font-size:17px;letter-spacing:.04em">Gmail</div>
@@ -82,7 +82,7 @@ a:hover{color:#DE9300}
   </main>
 </div>
 </x-dc>
-<script type="text/x-dc" data-dc-script data-props="{&quot;variant&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Complète&quot;,&quot;Compacte&quot;],&quot;default&quot;:&quot;Complète&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;showIfs&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;},&quot;images&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Hébergées&quot;,&quot;Intégrées&quot;],&quot;default&quot;:&quot;Hébergées&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;imageBaseUrl&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;https://hmouktadir.github.io/eursud-signatures/&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+<script type="text/x-dc" data-dc-script data-props="{&quot;variant&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Complète&quot;,&quot;Compacte&quot;],&quot;default&quot;:&quot;Complète&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;showIfs&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;},&quot;images&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Hébergées&quot;,&quot;Intégrées&quot;],&quot;default&quot;:&quot;Hébergées&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;imageBaseUrl&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;https://hmouktadir.github.io/eursud-signatures/public/&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
 const PEOPLE = [
   ["Abdelmajid", "MAZOIR", "Managing Director", "General Management", "+212661261235", "mabdelmajid"],
   ["Fadwa", "YADDASSI", "Management Assistant", "General Management", "+212662376604", "contact"],
@@ -116,9 +116,9 @@ class Component extends DCLogic {
   }
   // Email-safe HTML: tables + attributes only, explicit image sizes, bgcolor for Outlook.
   buildHtml(p, mode) {
-    const base = (this.props.imageBaseUrl ?? "https://hmouktadir.github.io/eursud-signatures/").replace(/\/?$/, "/");
+    const base = (this.props.imageBaseUrl ?? "https://hmouktadir.github.io/eursud-signatures/public/").replace(/\/?$/, "/");
     const embed = (this.props.images ?? "Hébergées") === "Intégrées";
-    const src = (f) => mode === "preview" ? "public/" + f : (embed && this.dataUris[f]) || base + f;
+    const src = (f) => mode === "preview" ? "public/" + f : f === "logo-eursud.png" && !(mode && mode.folder) ? "https://eursudlogistique.com/logo-eursud.png" : mode && mode.folder ? encodeURIComponent(mode.folder) + "/" + f : (embed && this.dataUris[f]) || base + f;
     const site = "https://eursudlogistique.ma/";
     const D = "font-family:Arial,Helvetica,sans-serif;";
     const B = "font-family:Arial,Helvetica,sans-serif;";
@@ -173,7 +173,39 @@ ${row("W", a(site, "eursudlogistique.ma", "font-weight:600;"))}
     return { display: `${first} ${last}`, title, dept, email, phone: fmt(tel), telHref: `tel:${tel}`, mailHref: `mailto:${email}` };
   }
   flash(msg) { this.setState({ status: msg, ok: true }); clearTimeout(this.t); this.t = setTimeout(() => this.setState({ ok: false }), 2400); }
-  download() {
+  async download() {
+    const p = this.curPerson();
+    const name = `Signature ${p.display}`;
+    const folder = `${name}_files`;
+    const doc = `<!DOCTYPE html><html><head><meta charset="utf-8"><title>${p.display}</title></head><body style="margin:0;">${this.buildHtml(p, { folder })}</body></html>`;
+    const enc = new TextEncoder();
+    const files = [{ name: `${name}.htm`, data: enc.encode(doc) }];
+    const imgs = ["logo-eursud.png"].concat((this.props.showIfs ?? true) ? ["ifs-logo-transp.png"] : []);
+    for (const f of imgs) files.push({ name: `${folder}/${f}`, data: new Uint8Array(await (await fetch("public/" + f)).arrayBuffer()) });
+    const crcT = []; for (let n = 0; n < 256; n++) { let c = n; for (let k = 0; k < 8; k++) c = c & 1 ? 0xEDB88320 ^ (c >>> 1) : c >>> 1; crcT[n] = c >>> 0; }
+    const crc = (d) => { let c = 0xFFFFFFFF; for (let i = 0; i < d.length; i++) c = crcT[(c ^ d[i]) & 255] ^ (c >>> 8); return (c ^ 0xFFFFFFFF) >>> 0; };
+    const parts = [], central = []; let off = 0;
+    for (const f of files) {
+      const nm = enc.encode(f.name), c = crc(f.data), sz = f.data.length;
+      const h = new DataView(new ArrayBuffer(30));
+      h.setUint32(0, 0x04034b50, true); h.setUint16(4, 20, true); h.setUint16(6, 0x0800, true);
+      h.setUint32(14, c, true); h.setUint32(18, sz, true); h.setUint32(22, sz, true); h.setUint16(26, nm.length, true);
+      parts.push(new Uint8Array(h.buffer), nm, f.data);
+      const ch = new DataView(new ArrayBuffer(46));
+      ch.setUint32(0, 0x02014b50, true); ch.setUint16(4, 20, true); ch.setUint16(6, 20, true); ch.setUint16(8, 0x0800, true);
+      ch.setUint32(16, c, true); ch.setUint32(20, sz, true); ch.setUint32(24, sz, true); ch.setUint16(28, nm.length, true); ch.setUint32(42, off, true);
+      central.push(new Uint8Array(ch.buffer), nm);
+      off += 30 + nm.length + sz;
+    }
+    const cSize = central.reduce((s, b) => s + b.length, 0);
+    const e = new DataView(new ArrayBuffer(22));
+    e.setUint32(0, 0x06054b50, true); e.setUint16(8, files.length, true); e.setUint16(10, files.length, true); e.setUint32(12, cSize, true); e.setUint32(16, off, true);
+    const url = URL.createObjectURL(new Blob([...parts, ...central, new Uint8Array(e.buffer)], { type: "application/zip" }));
+    const el = document.createElement("a"); el.href = url; el.download = `${name}.zip`;
+    document.body.appendChild(el); el.click(); el.remove(); setTimeout(() => URL.revokeObjectURL(url), 1000);
+    this.flash("ZIP Outlook téléchargé — extraire dans %APPDATA%\\Microsoft\\Signatures");
+  }
+  downloadOld() {
     const p = this.curPerson();
     const doc = `<!DOCTYPE html><html><head><meta charset="utf-8"><title>${p.display}</title></head><body style="margin:0;">${this.exportHtml()}</body></html>`;
     const url = URL.createObjectURL(new Blob([doc], { type: "text/html" }));
