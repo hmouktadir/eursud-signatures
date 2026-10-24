@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;700&amp;family=Public+Sans:wght@400;500;600;700&amp;family=Saira+Condensed:wght@600;700;800&amp;display=swap">
+<style>
+body{margin:0;background:#F7F7F5;font-family:"Public Sans",system-ui,sans-serif;color:#141414;-webkit-font-smoothing:antialiased}
+a{color:#141414}
+a:hover{color:#DE9300}
+</style>
+</helmet>
+<div style="min-height:100vh;background:#F7F7F5">
+  <header style="background:#141414;color:#fff;border-bottom:3px solid #F5A300">
+    <div style="max-width:1180px;margin:0 auto;padding:36px 32px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap">
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <div style="display:inline-flex;align-items:center;gap:10px;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#B4B4B4"><span style="width:26px;height:3px;background:#F5A300"></span>Charte e-mail · 16 collaborateurs</div>
+        <h1 style="margin:0;font-family:'Saira Condensed','Arial Narrow',sans-serif;font-weight:800;text-transform:uppercase;font-size:44px;line-height:1.02;letter-spacing:.01em">Signatures e-mail</h1>
+      </div>
+      <img src="public/logo-eursud-blanc.png" alt="EURSUD LOGISTIQUE" style="height:52px;width:auto;display:block">
+    </div>
+  </header>
+
+  <main style="max-width:1180px;margin:0 auto;padding:40px 32px 72px;display:flex;flex-wrap:wrap;gap:32px;align-items:flex-start">
+    <aside style="display:flex;flex-direction:column;gap:12px;flex:1 1 260px;max-width:300px">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#4C4F52">Collaborateur</div>
+      <div style="display:flex;flex-direction:column;background:#fff;border:1px solid #DBDBD7">
+        <sc-for list="{{ people }}" as="p" hint-placeholder-count="16">
+          <button onClick="{{ p.select }}" style="all:unset;cursor:pointer;display:flex;flex-direction:column;gap:2px;padding:10px 14px;border-bottom:1px solid #EEEEEC;border-left:3px solid {{ p.bar }};background:{{ p.bg }}" style-hover="background:#EEEEEC">
+            <span style="font-family:'Saira Condensed','Arial Narrow',sans-serif;font-weight:700;text-transform:uppercase;font-size:16px;letter-spacing:.02em;line-height:1.2">{{ p.display }}</span>
+            <span style="font-size:12px;color:#4C4F52;line-height:1.35">{{ p.title }}</span>
+          </button>
+        </sc-for>
+      </div>
+    </aside>
+
+    <section style="display:flex;flex-direction:column;gap:20px;min-width:0;flex:1 1 520px">
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#4C4F52">Aperçu — {{ variantLabel }}</div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap">
+          <button onClick="{{ copyRich }}" style="border:none;cursor:pointer;background:#F5A300;color:#141414;font-family:'Saira Condensed','Arial Narrow',sans-serif;text-transform:uppercase;font-weight:700;letter-spacing:.05em;font-size:16px;padding:12px 26px" style-hover="background:#DE9300">Copier la signature</button>
+          <button onClick="{{ copyHtml }}" style="border:none;cursor:pointer;background:#141414;color:#fff;font-family:'Saira Condensed','Arial Narrow',sans-serif;text-transform:uppercase;font-weight:700;letter-spacing:.05em;font-size:16px;padding:12px 26px" style-hover="background:#000">Copier le code HTML</button>
+          <button onClick="{{ downloadHtm }}" style="border:1px solid #141414;cursor:pointer;background:#fff;color:#141414;font-family:'Saira Condensed','Arial Narrow',sans-serif;text-transform:uppercase;font-weight:700;letter-spacing:.05em;font-size:16px;padding:11px 24px" style-hover="background:#EEEEEC">Télécharger pour Outlook (.zip)</button>
+        </div>
+      </div>
+
+      <div style="background:#fff;border:1px solid #DBDBD7;overflow-x:auto">
+        <div style="padding:14px 24px;border-bottom:1px solid #EEEEEC;display:flex;flex-direction:column;gap:4px;font-size:13px;color:#4C4F52">
+          <div><b style="color:#141414">De :</b> {{ cur.display }} &lt;{{ cur.email }}&gt;</div>
+          <div><b style="color:#141414">Objet :</b> Confirmation de votre enlèvement — Agadir → Perpignan</div>
+        </div>
+        <div style="padding:28px 24px 36px">
+          <p style="margin:0 0 6px;font-size:14px;line-height:1.6">Bonjour,</p>
+          <p style="margin:0 0 6px;font-size:14px;line-height:1.6">Nous vous confirmons l'enlèvement de vos palettes ce jeudi.</p>
+          <p style="margin:0 0 28px;font-size:14px;line-height:1.6">Cordialement,</p>
+
+          <div ref="{{ sigRef }}">{{ sigEl }}</div>
+        </div>
+      </div>
+
+      <div style="display:flex;align-items:center;gap:10px;min-height:20px;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#4C4F52">
+        <span style="width:8px;height:8px;background:{{ statusDot }}"></span>{{ status }}
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:16px">
+        <div style="background:#fff;border:1px solid #DBDBD7;padding:18px 20px;display:flex;flex-direction:column;gap:6px">
+          <div style="font-family:'Saira Condensed','Arial Narrow',sans-serif;font-weight:700;text-transform:uppercase;font-size:17px;letter-spacing:.04em">Outlook</div>
+          <p style="margin:0;font-size:13px;line-height:1.55;color:#4C4F52;text-wrap:pretty">Fichier → Options → Courrier → Signatures → Nouveau, puis coller (Ctrl+V). Avec logos garantis : extraire le .zip dans %APPDATA%\Microsoft\Signatures, redémarrer Outlook, puis choisir la signature.</p>
+        </div>
+        <div style="background:#fff;border:1px solid #DBDBD7;padding:18px 20px;display:flex;flex-direction:column;gap:6px">
+          <div style="font-family:'Saira Condensed','Arial Narrow',sans-serif;font-weight:700;text-transform:uppercase;font-size:17px;letter-spacing:.04em">Gmail</div>
+          <p style="margin:0;font-size:13px;line-height:1.55;color:#4C4F52;text-wrap:pretty">Paramètres → Voir tous les paramètres → Signature → Créer, puis coller.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;variant&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Complète&quot;,&quot;Compacte&quot;],&quot;default&quot;:&quot;Complète&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;showIfs&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;},&quot;images&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Hébergées&quot;,&quot;Intégrées&quot;],&quot;default&quot;:&quot;Hébergées&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;imageBaseUrl&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;https://hmouktadir.github.io/eursud-signatures/public/&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+const PEOPLE = [
+  ["Abdelmajid", "MAZOIR", "Managing Director", "General Management", "+212661261235", "mabdelmajid"],
+  ["Fadwa", "YADDASSI", "Management Assistant", "General Management", "+212662376604", "contact"],
+  ["Zineb", "MAZOIR", "Administrative Officer", "General Management", "+212661485709", "mzineb"],
+  ["Fatima", "BENKHANFAR", "HR Officer", "Human Resources Department", "+212662620371", "rh"],
+  ["Houda", "AATAR", "Administrator", "Human Resources Department", "+212662622786", "administration"],
+  ["Fadoua", "ELAKRAD", "Sales Manager", "Sales Department", "+212661103787", "efadoua"],
+  ["Hatim", "KHOUMAISSI", "Head of Transport Operations", "Transport Operations Department", "+212661085346", "khatim"],
+  ["Najya", "CHAFY", "Export Customer Service", "Transport Operations Department", "+212661304713", "export"],
+  ["Ismail", "BATHAHI", "Import Customer Service", "Transport Operations Department", "+212661522851", "ibathahi"],
+  ["Latifa", "BOULAYOUN", "Operations Coordinator", "Transport Operations Department", "+212662275336", "supportexploitation"],
+  ["Mohamed", "JALAL", "Finance & Accounting Manager", "Finance & Accounting Department", "+212662726256", "mjalal"],
+  ["Omar", "ZAGHNANE", "Accounting Assistant", "Finance & Accounting Department", "+212654438900", "comptabilite"],
+  ["Aziza", "BAHIA", "Billing & Collections Administrator", "Billing & Collections Department", "+212662555081", "facturation"],
+  ["Hicham", "SOUILH", "Fleet, Procurement & Insurance Manager", "Fleet Management Department", "+212662252557", "shicham"],
+  ["Soukaina", "EL KOUSSIR", "Purchasing Officer", "Fleet Management Department", "+212662555099", "achat"],
+  ["Abderrahim", "RAIS", "Quality Specialist", "Quality Department", "+212662555448", "qualite"],
+];
+const fmt = (p) => { const r = p.replace(/\D/g, "").slice(3); return `+212 ${r.slice(0,3)} ${r.slice(3,5)} ${r.slice(5,7)} ${r.slice(7,9)}`; };
+
+class Component extends DCLogic {
+  state = { sel: 0, status: "Sélectionnez un collaborateur, puis copiez sa signature", ok: false };
+  sigRef = React.createRef();
+
+  dataUris = {};
+  componentDidMount() {
+    ["logo-eursud.png", "ifs-logo-transp.png"].forEach((f) =>
+      fetch("public/" + f).then((r) => r.blob()).then((b) => {
+        const fr = new FileReader(); fr.onload = () => { this.dataUris[f] = fr.result; }; fr.readAsDataURL(b);
+      }).catch(() => {}));
+  }
+  // Email-safe HTML: tables + attributes only, explicit image sizes, bgcolor for Outlook.
+  buildHtml(p, mode) {
+    const base = (this.props.imageBaseUrl ?? "https://hmouktadir.github.io/eursud-signatures/public/").replace(/\/?$/, "/");
+    const embed = (this.props.images ?? "Hébergées") === "Intégrées";
+    const src = (f) => mode === "preview" ? "public/" + f : f === "logo-eursud.png" && !(mode && mode.folder) ? "https://eursudlogistique.com/logo-eursud.png" : mode && mode.folder ? encodeURIComponent(mode.folder) + "/" + f : (embed && this.dataUris[f]) || base + f;
+    const site = "https://eursudlogistique.ma/";
+    const D = "font-family:Arial,Helvetica,sans-serif;";
+    const B = "font-family:Arial,Helvetica,sans-serif;";
+    const M = "font-family:Arial,Helvetica,sans-serif;";
+    const T = 'cellpadding="0" cellspacing="0" border="0" role="presentation"';
+    const a = (href, txt, extra = "") => `<a href="${href}" style="color:#141414;text-decoration:none;${extra}">${txt}</a>`;
+    const row = (k, v) => `<tr><td width="22" style="width:22px;padding:0;${M}font-size:11px;font-weight:700;color:#121212;line-height:20px;">${k}</td><td style="padding:0;${B}font-size:13px;color:#141414;line-height:20px;">${v}</td></tr>`;
+    if ((this.props.variant ?? "Complète") === "Compacte") {
+      return `<table ${T} style="border-collapse:collapse;"><tr>
+<td valign="middle" style="padding:0 14px 0 0;border-right:3px solid #F5A300;"><img src="${src("logo-eursud.png")}" width="104" height="35" alt="EURSUD LOGISTIQUE" style="display:block;width:104px;height:35px;border:0;"></td>
+<td valign="middle" style="padding:0 0 0 14px;${B}font-size:12px;line-height:18px;color:#141414;">
+<span style="${D}font-weight:800;font-size:16px;line-height:20px;text-transform:uppercase;color:#121212;">${p.display}</span><br>
+<span style="color:#4C4F52;">${p.title}</span><br>
+${a(p.telHref, p.phone)} &middot; ${a(p.mailHref, p.email)}
+</td></tr></table>`;
+    }
+    const ifs = (this.props.showIfs ?? true)
+      ? `<td width="64" valign="bottom" align="right" style="width:64px;padding:0;"><img src="${src("ifs-logo-transp.png")}" width="60" height="36" alt="Certifié IFS Logistics" style="display:block;width:60px;height:36px;border:0;"></td>` : "";
+    return `<table ${T} width="580" style="border-collapse:collapse;width:580px;"><tr><td style="padding:0;">
+<table ${T} width="580" style="border-collapse:collapse;width:580px;"><tr>
+<td width="170" valign="middle" style="width:170px;padding:0 20px 0 0;border-right:3px solid #F5A300;"><a href="${site}"><img src="${src("logo-eursud.png")}" width="168" height="57" alt="EURSUD LOGISTIQUE" style="display:block;width:168px;height:57px;border:0;"></a></td>
+<td valign="top" style="padding:0 0 0 20px;">
+<table ${T} style="border-collapse:collapse;">
+<tr><td colspan="2" style="padding:0;${D}font-weight:800;font-size:22px;line-height:24px;text-transform:uppercase;color:#121212;">${p.display}</td></tr>
+<tr><td colspan="2" style="padding:6px 0 0 0;"><table ${T} style="border-collapse:collapse;"><tr>
+<td width="22" height="3" bgcolor="#F5A300" style="width:22px;height:3px;background:#F5A300;font-size:0;line-height:0;">&nbsp;</td>
+<td style="padding:0 0 0 8px;${M}font-size:11px;line-height:16px;letter-spacing:1px;text-transform:uppercase;color:#121212;">${p.title}</td>
+</tr></table></td></tr>
+<tr><td colspan="2" style="padding:2px 0 10px 0;${B}font-size:12px;line-height:16px;color:#4C4F52;">${p.dept}</td></tr>
+${row("M", a(p.telHref, p.phone))}
+${row("T", a("tel:+212528263232", "+212 528 26 32 32"))}
+${row("E", a(p.mailHref, p.email))}
+${row("W", a(site, "eursudlogistique.ma", "font-weight:600;"))}
+</table></td>${ifs}
+</tr></table></td></tr>
+<tr><td height="16" style="height:16px;font-size:0;line-height:0;">&nbsp;</td></tr>
+<tr><td height="3" bgcolor="#F5A300" style="height:3px;background:#F5A300;font-size:0;line-height:0;">&nbsp;</td></tr>
+<tr><td bgcolor="#141414" style="background:#141414;padding:0;">
+<table ${T} width="580" style="border-collapse:collapse;width:580px;"><tr>
+<td valign="middle" style="padding:11px 16px;">
+<span style="${D}font-weight:800;font-size:15px;line-height:18px;text-transform:uppercase;letter-spacing:.5px;color:#ffffff;">Your pallets are <span style="color:#F5A300;">always on time</span></span><br>
+<span style="${M}font-size:10px;line-height:16px;letter-spacing:.8px;text-transform:uppercase;color:#B4B4B4;">Borj Dlalat &middot; Entrée HI N°1 &middot; 1er étage &middot; Agadir, Maroc</span>
+</td>
+<td valign="middle" align="right" style="padding:11px 16px;white-space:nowrap;"><a href="https://www.linkedin.com/company/eursud-logitisque" style="${M}font-size:10px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:#F5A300;text-decoration:none;">LinkedIn</a></td>
+</tr></table></td></tr>
+</table>`;
+  }
+  exportHtml() { return this.buildHtml(this.curPerson(), "export"); }
+  curPerson() {
+    const [first, last, title, dept, tel, mail] = PEOPLE[this.state.sel];
+    const email = `${mail}@eursudlogistique.ma`;
+    return { display: `${first} ${last}`, title, dept, email, phone: fmt(tel), telHref: `tel:${tel}`, mailHref: `mailto:${email}` };
+  }
+  flash(msg) { this.setState({ status: msg, ok: true }); clearTimeout(this.t); this.t = setTimeout(() => this.setState({ ok: false }), 2400); }
+  async download() {
+    const p = this.curPerson();
+    const name = `Signature ${p.display}`;
+    const folder = `${name}_files`;
+    const doc = `<!DOCTYPE html><html><head><meta charset="utf-8"><title>${p.display}</title></head><body style="margin:0;">${this.buildHtml(p, { folder })}</body></html>`;
+    const enc = new TextEncoder();
+    const files = [{ name: `${name}.htm`, data: enc.encode(doc) }];
+    const imgs = ["logo-eursud.png"].concat((this.props.showIfs ?? true) ? ["ifs-logo-transp.png"] : []);
+    for (const f of imgs) files.push({ name: `${folder}/${f}`, data: new Uint8Array(await (await fetch("public/" + f)).arrayBuffer()) });
+    const crcT = []; for (let n = 0; n < 256; n++) { let c = n; for (let k = 0; k < 8; k++) c = c & 1 ? 0xEDB88320 ^ (c >>> 1) : c >>> 1; crcT[n] = c >>> 0; }
+    const crc = (d) => { let c = 0xFFFFFFFF; for (let i = 0; i < d.length; i++) c = crcT[(c ^ d[i]) & 255] ^ (c >>> 8); return (c ^ 0xFFFFFFFF) >>> 0; };
+    const parts = [], central = []; let off = 0;
+    for (const f of files) {
+      const nm = enc.encode(f.name), c = crc(f.data), sz = f.data.length;
+      const h = new DataView(new ArrayBuffer(30));
+      h.setUint32(0, 0x04034b50, true); h.setUint16(4, 20, true); h.setUint16(6, 0x0800, true);
+      h.setUint32(14, c, true); h.setUint32(18, sz, true); h.setUint32(22, sz, true); h.setUint16(26, nm.length, true);
+      parts.push(new Uint8Array(h.buffer), nm, f.data);
+      const ch = new DataView(new ArrayBuffer(46));
+      ch.setUint32(0, 0x02014b50, true); ch.setUint16(4, 20, true); ch.setUint16(6, 20, true); ch.setUint16(8, 0x0800, true);
+      ch.setUint32(16, c, true); ch.setUint32(20, sz, true); ch.setUint32(24, sz, true); ch.setUint16(28, nm.length, true); ch.setUint32(42, off, true);
+      central.push(new Uint8Array(ch.buffer), nm);
+      off += 30 + nm.length + sz;
+    }
+    const cSize = central.reduce((s, b) => s + b.length, 0);
+    const e = new DataView(new ArrayBuffer(22));
+    e.setUint32(0, 0x06054b50, true); e.setUint16(8, files.length, true); e.setUint16(10, files.length, true); e.setUint32(12, cSize, true); e.setUint32(16, off, true);
+    const url = URL.createObjectURL(new Blob([...parts, ...central, new Uint8Array(e.buffer)], { type: "application/zip" }));
+    const el = document.createElement("a"); el.href = url; el.download = `${name}.zip`;
+    document.body.appendChild(el); el.click(); el.remove(); setTimeout(() => URL.revokeObjectURL(url), 1000);
+    this.flash("ZIP Outlook téléchargé — extraire dans %APPDATA%\\Microsoft\\Signatures");
+  }
+  downloadOld() {
+    const p = this.curPerson();
+    const doc = `<!DOCTYPE html><html><head><meta charset="utf-8"><title>${p.display}</title></head><body style="margin:0;">${this.exportHtml()}</body></html>`;
+    const url = URL.createObjectURL(new Blob([doc], { type: "text/html" }));
+    const el = document.createElement("a"); el.href = url; el.download = `Signature ${p.display}.htm`;
+    document.body.appendChild(el); el.click(); el.remove(); setTimeout(() => URL.revokeObjectURL(url), 1000);
+    this.flash("Fichier .htm téléchargé");
+  }
+  async copy(rich) {
+    const html = this.exportHtml();
+    if (rich && window.ClipboardItem && navigator.clipboard?.write) {
+      try {
+        await navigator.clipboard.write([new ClipboardItem({ "text/html": new Blob([html], { type: "text/html" }), "text/plain": new Blob([this.sigRef.current.innerText], { type: "text/plain" }) })]);
+        return this.flash("Signature copiée — collez-la dans votre messagerie");
+      } catch (e) {}
+    }
+    let ok = false;
+    const holder = document.createElement(rich ? "div" : "textarea");
+    holder.style.cssText = "position:fixed;left:-9999px;top:0;opacity:0;background:#fff";
+    if (rich) { holder.contentEditable = "true"; holder.innerHTML = html; } else { holder.value = html; }
+    document.body.appendChild(holder);
+    try {
+      if (rich) {
+        const range = document.createRange(); range.selectNodeContents(holder);
+        const sel = window.getSelection(); sel.removeAllRanges(); sel.addRange(range);
+      } else { holder.focus(); holder.select(); }
+      ok = document.execCommand("copy");
+    } catch (e) { ok = false; }
+    window.getSelection().removeAllRanges();
+    holder.remove();
+    if (ok) return this.flash(rich ? "Signature copiée — collez-la dans votre messagerie" : "Code HTML copié");
+    const fallback = rich && window.ClipboardItem
+      ? navigator.clipboard.write([new ClipboardItem({ "text/html": new Blob([html], { type: "text/html" }), "text/plain": new Blob([this.sigRef.current.innerText], { type: "text/plain" }) })])
+      : navigator.clipboard.writeText(html);
+    fallback.then(
+      () => this.flash(rich ? "Signature copiée — collez-la dans votre messagerie" : "Code HTML copié"),
+      () => this.setState({ status: "Copie bloquée par le navigateur — sélectionnez la signature et faites Ctrl+C", ok: false })
+    );
+  }
+  componentWillUnmount() { clearTimeout(this.t); }
+
+  renderVals() {
+    const people = PEOPLE.map(([first, last, title, dept, tel, mail], i) => {
+      const email = `${mail}@eursudlogistique.ma`;
+      return {
+        display: `${first} ${last}`, title, dept, email,
+        phone: fmt(tel), telHref: `tel:${tel}`, mailHref: `mailto:${email}`,
+        bar: i === this.state.sel ? "#F5A300" : "transparent",
+        bg: i === this.state.sel ? "#F7F7F5" : "#ffffff",
+        select: () => this.setState({ sel: i }),
+      };
+    });
+    const compact = (this.props.variant ?? "Complète") === "Compacte";
+    return {
+      people, cur: people[this.state.sel],
+      isFull: !compact, isCompact: compact,
+      variantLabel: compact ? "Version compacte (réponses)" : "Version complète",
+      showIfs: this.props.showIfs ?? true,
+      sigRef: this.sigRef,
+      sigEl: React.createElement("div", { dangerouslySetInnerHTML: { __html: this.buildHtml(this.curPerson(), "preview") } }),
+      status: this.state.status,
+      statusDot: this.state.ok ? "#F5A300" : "#DBDBD7",
+      copyRich: () => this.copy(true),
+      copyHtml: () => this.copy(false),
+      downloadHtm: () => this.download(),
+    };
+  }
+}
+</script>
+</body>
+</html>
